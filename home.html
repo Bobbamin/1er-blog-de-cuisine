@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Gestionnaire de recette de cuisine | Page d'accueil</title>
+</head>
+
+<body>
+    <!-- Navigation principale -->
+    <header class="navbar sticky top-0 p-4 flex justify-between items-center">
+        <a href="home.html" class="text-2xl font-playfair">Les recettes de Jerem</a>
+        <nav class="flex items-center">
+            <a href="home.html" class="mr-4">Accueil</a>
+            <a href="login.html" class="mr-4" id="loginLink">Connexion</a>
+            <a href="signup.html" class="mr-4" id="signupLink">Inscription</a>
+            <span id="userEmailDisplay" class="mr-4"></span>
+            <button id="showFavoritesBtn" class="btn-primary p-2 rounded-md inline-block">Voir les favoris</button>
+            <button id="logoutBtn" class="btn-primary p-2 rounded-md ml-4" style="display: none;">Déconnexion</button>
+        </nav>
+    </header>
+
+    <!-- Bannière -->
+    <section class="banner relative w-full h-96 bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('medias/pexels-poivre.jpg');">
+        <div class="bg-white bg-opacity-75 p-4 rounded-lg text-center">
+            <h1 class="text-4xl font-playfair mb-4">Découvrez mes recettes faites avec AMOUR</h1>
+            <p class="text-xl font-nunito">Votre source d'inspiration quotidienne...</p>
+            <a href="#recipesList" class="btn-primary mt-4 p-2 rounded-md inline-block">Allez c'est parti!</a>
+        </div>
+    </section>
+
+    <main class="min-h-screen flex flex-col items-center py-10">
+        <h1 class="text-5xl font-bold mb-6 font-playfair">Recettes</h1>
+
+        <!-- Recherche -->
+        <section class="w-full max-w-4xl mb-8">
+            <input type="text" id="search" placeholder="Recherche de recette"
+                class="w-full border border-gray-300 p-2 rounded-md mb-4">
+            <div class="mb-4">
+                <label for="filterCategory" class="block text-gray-700">Filtrer par catégorie :</label>
+                <select id="filterCategory" class="mt-1 block w-full border border-gray-300 p-2 rounded-md">
+                    <option value="all">Toutes les catégories</option>
+                    <option value="Entrées">Entrées</option>
+                    <option value="Apéritifs">Apéritifs</option>
+                    <option value="Plats">Plats</option>
+                    <option value="Desserts">Desserts</option>
+                </select>
+                <button id="createRecipeBtn" class="btn-primary mt-4 p-2 rounded-md inline-block">Créer une
+                    recette</button>
+            </div>
+            <div id="recipesList" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+        </section>
+    </main>
+
+    <!-- Ajout/modif de recette -->
+    <div id="recipeModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-lg w-full">
+            <h2 id="modalTitle" class="text-2xl font-bold mb-4">Ajouter une recette</h2>
+            <form id="recipeForm" class="bg-white p-6 rounded-lg shadow-lg">
+                <input type="hidden" id="recipeId" />
+                <div class="mb-4">
+                    <label for="title" class="block text-gray-700">Titre</label>
+                    <input type="text" id="title" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="ingredients" class="block text-gray-700">Ingrédients</label>
+                    <textarea id="ingredients" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="steps" class="block text-gray-700">Étapes</label>
+                    <textarea id="steps" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="preparationTime" class="block text-gray-700">Temps de préparation</label>
+                    <input type="text" id="preparationTime"
+                        class="mt-1 block w-full border border-gray-300 p-2 rounded-md" required>
+                </div>
+                <div class="mb-4">
+                    <label for="cookingTime" class="block text-gray-700">Temps de cuisson</label>
+                    <input type="text" id="cookingTime" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="photo" class="block text-gray-700">URL de l'image</label>
+                    <input type="url" id="photo" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="category" class="block text-gray-700">Catégorie</label>
+                    <select id="category" class="mt-1 block w-full border border-gray-300 p-2 rounded-md" required>
+                        <option value="Entrées">Entrées</option>
+                        <option value="Apéritifs">Apéritifs</option>
+                        <option value="Plats">Plats</option>
+                        <option value="Desserts">Desserts</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full btn-primary p-2 rounded-md">Enregistrer</button>
+            </form>
+            <button id="closeModalBtn" class="btn-secondary mt-4 p-2 rounded-md inline-block">Fermer</button>
+        </div>
+    </div>
+
+
+    <script src="scripts/signup.js"></script>
+    <script src="scripts/login.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>

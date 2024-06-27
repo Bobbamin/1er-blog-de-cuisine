@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Gestionnaire de recette de cuisine | Page d'inscription</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar p-4 flex justify-between items-center">
+        <a href="home.html" class="text-2xl font-playfair">Les recettes de Jerem</a>
+        <div class="flex items-center">
+            <a href="home.html" class="mr-4">Accueil</a>
+            <a href="login.html" class="mr-4" id="loginLink">Connexion</a>
+            <a href="signup.html" class="mr-4" id="signupLink">Inscription</a>
+            <span id="userEmailDisplay" class="mr-4"></span>
+            <button id="logoutBtn" class="btn-primary p-2 rounded-md" style="display: none;">Déconnexion</button>
+        </div>
+    </nav>
+
+    <!-- Bannière -->
+    <div class="banner relative w-full h-96 bg-cover bg-center flex items-center justify-center"
+        style="background-image: url('medias/pexels-poivre.jpg');">
+        <div class="bg-white bg-opacity-75 p-4 rounded-lg text-center">
+            <h1 class="text-4xl font-playfair mb-4">Découvrez mes recettes faites avec AMOUR</h1>
+            <p class="text-xl font-nunito">Votre source d'inspiration quotidienne...</p>
+            <a href="#recipesList" class="btn-primary mt-4 p-2 rounded-md inline-block">Allez c'est parti!</a>
+        </div>
+    </div>
+
+    <div class="modal-container">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+            <h2 class="text-2xl font-bold mb-6 text-center">Inscription</h2>
+            <form id="signupForm">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700">Email</label>
+                    <input type="email" id="email" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required>
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Mot de passe</label>
+                    <input type="password" id="password" class="mt-1 block w-full border border-gray-300 p-2 rounded-md"
+                        required>
+                </div>
+                <button type="submit" class="w-full btn-primary p-2 rounded-md">Inscription</button>
+            </form>
+            <div id="error" class="text-red-500 text-center mt-4"></div>
+            <p class="text-center mt-4">
+                Déjà un compte ? <a href="login.html" class="text-blue-500 hover:text-blue-700">Connectez-vous</a>
+            </p>
+            <p class="text-center mt-4">
+                <a href="home.html" class="text-blue-500 hover:text-blue-700">Retour à l'accueil</a>
+            </p>
+        </div>
+    </div>
+
+
+    <script src="scripts/signup.js"></script>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
