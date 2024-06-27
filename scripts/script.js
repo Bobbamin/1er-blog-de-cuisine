@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.removeItem('authenticated');
             localStorage.removeItem('userRole');
             localStorage.removeItem('userEmail');
-            window.location.href = 'home.html';
+            window.location.href = 'index.html';
         });
     }
 
@@ -313,7 +313,7 @@ const deleteRecipe = (id) => {
     } else {
         localStorage.setItem('recipes', JSON.stringify(recipes));
         alert('Recette supprimée avec succès !');
-        window.location.href = 'home.html';
+        window.location.href = 'index.html';
     }
 };
 

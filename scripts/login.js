@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log('Ajout des recettes de base');
                 addDefaultRecipes();
 
-                window.location.href = 'home.html';
+                window.location.href = 'index.html';
             } else {
                 document.getElementById('error').innerText = 'Email ou mot de passe incorrect';
                 console.log('Identification incorrecte');
